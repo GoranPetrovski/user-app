@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body class="container">
+    <main>
+        <div class="jumbotron">
+            <h1>User management</h1>
+            <hr>
+            <h2>Add new users:</h2>
+            <form name="form1" method="POST" action="/user-project/user/">
+                <table>
+                    <tr>
+                        <td>First name</td>
+                        <td>
+                            <input type="text" name="firstName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Last name</td>
+                        <td>
+                            <input type="text" name="lastName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Save">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <hr>
+
+            <h2>All users:</h2>
+            <ul>
+                <% users.forEach(function(user) { %>
+                    <li>
+                        <%= user.firstName %> -
+                            <%= user.lastName %>
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
+    </main>
+</body>
+
+</html>
