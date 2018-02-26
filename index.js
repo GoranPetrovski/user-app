@@ -7,6 +7,7 @@ const app = express();
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
+//set 8081 as default port
 const defaultPort = 8081;
 app.set("port", process.env.PORT || 8081);
 
@@ -17,13 +18,13 @@ const exts = /\.js$/;
 const routedir = path.join(__dirname, "routes");
 
 // Initialize default route
-/* istanbul ignore if */
 app.all(routePrefix, (req, res) => {
     const serviceInfo = packageName;
     res.setHeader("Content-Type", "application/json");
     res.send(serviceInfo);
 });
 
+//read all route files
 fs.readdirSync(routedir).forEach(function (f) {
     if (f[0] !== "." && exts.test(f)) { 
         const routePath = path.join(routedir, f);
@@ -40,7 +41,5 @@ fs.readdirSync(routedir).forEach(function (f) {
 });
 
 app.listen(defaultPort, function () {
-    //const host = server.address().address;
-    //const port = server.address().port;    
     console.log("Express server listening on port " + app.get("port"));
 });

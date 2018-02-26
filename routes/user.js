@@ -6,6 +6,7 @@ const UserManager = require('../services/user-manager').UserManager;
 
 const app = router();
 
+//**Endpoint for get all users from sqlite */
 app.get(
     '/',
     (req, res) => {
@@ -18,6 +19,13 @@ app.get(
     }
 )
 
+/**Endpoint for create new user to sqlite 
+I must set urlencodedParser how to work with ejs teplate
+because when client input firstName and lastName and click on save btn
+the post request to server is invoked.
+When I am try in postman this code I must set bodyparser as middleware.
+My idea is when user create new user to get all users that are in sqlite db
+*/
 app.post(
     '/',
     urlencodedParser,
